@@ -46,3 +46,11 @@ trap 'preexec' DEBUG
 # (Това гарантира, че PS1 винаги започва "на чисто")
 PROMPT_COMMAND='echo -ne "\e[0m"'
 
+#  ---------
+# | Aliases |
+#  ---------
+alias g="git"
+alias docs="cd ~/Documents/"
+alias config="cd ~/.config/"
+alias srcbash="source ~/.bashrc"
+alias ff="fastfetch"

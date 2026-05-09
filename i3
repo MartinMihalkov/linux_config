@@ -1,1 +1,0 @@
-/home/martin/.config/i3/

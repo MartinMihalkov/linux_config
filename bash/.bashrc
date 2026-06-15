@@ -49,6 +49,7 @@ PROMPT_COMMAND='echo -ne "\e[0m"'
 #  ---------
 # | Aliases |
 #  ---------
+alias c="clear"
 alias g="git"
 alias docs="cd ~/Documents/"
 alias config="cd ~/.config/"

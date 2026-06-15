@@ -1,0 +1,203 @@
+# Sway configuration file
+# This config replaces X11 utilities with Wayland-native tools.
+exec --no-startup-id volumeicon
+exec --no-startup-id udiskie &
+set $mod Mod4
+
+# Font for window titles.
+font pango:monospace 8
+
+# Wayland handles mouse warping across outputs natively
+mouse_warping output
+
+# Autostart applications using dex (Wayland compatible)
+exec dex --autostart --environment sway
+
+# --- IDLE AND LOCKING (Replaces xss-lock & i3lock) ---
+# Requires 'swayidle' and 'swaylock' to be installed
+exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          before-sleep 'swaylock -f -c 000000'
+
+# NetworkManager applet works perfectly on Wayland
+exec nm-applet --indicator
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+# tiling_drag modifier titlebar
+
+# Start a terminal
+bindsym $mod+Return exec alacritty
+
+# Set broswe
+bindsym $mod+b exec vivaldi
+
+# Kill focused window
+bindsym $mod+q kill
+
+# --- PROGRAM LAUNCHER ---
+# Note: dmenu might require a Wayland wrapper (like dmenu-wl). 
+# A highly recommended native Wayland alternative is 'fuzzel' or 'tofi'.
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+d exec i3-dmenu-desktop
+
+# --- NAVIGATION & FOCUS ---
+# Replaced xdotool mouse warping with Sway's native command: 'swaymsg seat - cursor move'
+bindsym $mod+h focus left; exec swaymsg seat - cursor move 0 0
+bindsym $mod+j focus down; exec swaymsg seat - cursor move 0 0
+bindsym $mod+k focus up; exec swaymsg seat - cursor move 0 0
+bindsym $mod+l focus right; exec swaymsg seat - cursor move 0 0
+
+# Arrow keys for focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Layout splits
+bindsym $mod+m split h
+bindsym $mod+n split v
+bindsym $mod+f fullscreen toggle
+
+# Layout management
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+u layout stacking
+bindsym $mod+i layout tabbed
+bindsym $mod+o layout toggle split
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Focus parent
+bindsym $mod+a focus parent
+
+# --- WORKSPACES ---
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Cycle through last two workspaces
+bindsym Mod1+Tab workspace back_and_forth
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# --- CONTROL & RESIZING ---
+bindsym $mod+Shift+c reload
+# Sway doesn't need "restart" in place like i3 does; reload updates everything seamlessly.
+bindsym $mod+Tab reload
+
+bindsym $mod+Ctrl+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+j resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+k resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+l resize grow width 10 px or 10 ppt
+
+bindsym $mod+r resize set height 95 ppt
+bindsym $mod+Shift+r resize set height 50 ppt
+bindsym $mod+p resize set width 95 ppt
+bindsym $mod+Shift+p resize set width 50 ppt
+
+# --- WINDOW LOOKS ---
+default_border pixel 1
+default_floating_border pixel 1
+
+# Solid background color (Replaces xsetroot, requires 'swaybg')
+exec swaybg -c "#333333"
+
+# --- SYSTEM MODE (LOCK/LOGOUT/SHUTDOWN) ---
+set $mode_system System (l) lock, (e) logout, (s) shutdown, (r) reboot
+mode "$mode_system" {
+    bindsym l exec swaylock -f -c 000000, mode "default"
+    bindsym e exec swaymsg exit, mode "default"
+    bindsym s exec systemctl poweroff, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym XF86PowerOff mode "$mode_system"
+bindsym $mod+Shift+s mode "$mode_system"
+
+# --- CUSTOM APP SHORTCUTS ---
+bindsym $mod+e exec alacritty -e yazi
+bindsym $mod+Shift+e exec alacritty -e nvim
+
+# --- BRIGHTNESS & AUDIO ---
+bindsym XF86MonBrightnessUp   exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# Replaced i3status signal refreshing with Sway-native bar reloading if needed
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# --- KEYBOARD LAYOUT (Replaces setxkbmap) ---
+# This configures all keyboard inputs natively under Wayland.
+# Toggles between English and Bulgarian using Alt+Shift.
+input "type:keyboard" {
+    xkb_layout us,bg
+    xkb_options grp:alt_shift_toggle
+}
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
+
+# --- STATUS BAR ---
+# Uses swaybar natively, running i3status (or swaybar's default)
+bar {
+    status_command i3status
+}
+# bar {
+#     status_command swaybar_command status
+# }
+
+
+# Volume control using WirePlumber
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

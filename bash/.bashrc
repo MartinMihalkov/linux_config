@@ -54,3 +54,6 @@ alias docs="cd ~/Documents/"
 alias config="cd ~/.config/"
 alias srcbash="source ~/.bashrc"
 alias ff="fastfetch"
+
+alias brc="nvim ~/.bashrc"
+alias brel="source ~/.bashrc"

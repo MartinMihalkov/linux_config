@@ -3,9 +3,7 @@ j           next-line
 k           prev-line
 l           forward-char
 h           backward-char
-d           scroll-forward-half-screen
-u           scroll-backward-half-screen
-H           history-node
+o           history-node
 # Bind to Ctrl-e to scroll down 1 line (Vim style)
 J        down-line
 
@@ -16,5 +14,4 @@ K        up-line
 O           prev-window
 s           split-window
 x           delete-window
-X           delete-other-windows
 #echo

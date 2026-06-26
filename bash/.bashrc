@@ -58,4 +58,8 @@ alias ff="fastfetch"
 
 alias brc="nvim ~/.bashrc"
 alias brel="source ~/.bashrc"
+alias swrc="nvim ~/.config/sway/config"
 alias p="pacman"
+alias n="nvim"
+alias mi="makeinfo"
+alias i="info"

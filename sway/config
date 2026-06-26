@@ -1,11 +1,18 @@
 # Sway configuration file
 # This config replaces X11 utilities with Wayland-native tools.
+include /etc/sway/config.d/*
 exec --no-startup-id volumeicon
 exec --no-startup-id udiskie &
+# Force dark mode preference for xdg-desktop-portal
+exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 set $mod Mod4
 
+output * scale 1.3
+
 # Font for window titles.
-font pango:monospace 8
+# font pango:monospace 8
+font JetBrainsMono NFM 6
 
 # Wayland handles mouse warping across outputs natively
 mouse_warping output

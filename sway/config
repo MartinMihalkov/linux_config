@@ -5,6 +5,7 @@ exec --no-startup-id volumeicon
 exec --no-startup-id udiskie &
 # Force dark mode preference for xdg-desktop-portal
 exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+exec_always /home/martin/.local/share/bin/sway-battery-alert.sh
 
 set $mod Mod4
 
@@ -73,8 +74,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Layout splits
-bindsym $mod+m split h
-bindsym $mod+n split v
+bindsym $mod+n split h
+bindsym $mod+m split v
 bindsym $mod+f fullscreen toggle
 
 # Layout management

@@ -58,3 +58,4 @@ alias ff="fastfetch"
 
 alias brc="nvim ~/.bashrc"
 alias brel="source ~/.bashrc"
+alias p="pacman"

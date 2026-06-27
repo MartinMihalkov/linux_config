@@ -141,10 +141,8 @@ bindsym $mod+Ctrl+j resize grow height 10 px or 10 ppt
 bindsym $mod+Ctrl+k resize shrink height 10 px or 10 ppt
 bindsym $mod+Ctrl+l resize grow width 10 px or 10 ppt
 
-bindsym $mod+r resize set height 95 ppt
-bindsym $mod+Shift+r resize set height 50 ppt
-bindsym $mod+p resize set width 95 ppt
-bindsym $mod+Shift+p resize set width 50 ppt
+# Take screenshot using grim
+bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
 
 # --- WINDOW LOOKS ---
 default_border pixel 1

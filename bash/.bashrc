@@ -63,3 +63,9 @@ alias p="pacman"
 alias n="nvim"
 alias mi="makeinfo"
 alias i="info"
+
+export SDL_VIDE0DRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway

@@ -7,6 +7,11 @@ exec --no-startup-id udiskie &
 exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 exec_always /home/martin/.local/share/bin/sway-battery-alert.sh
 
+exec_always mako
+
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#exec_always dunst
+
 set $mod Mod4
 
 output * scale 1.3

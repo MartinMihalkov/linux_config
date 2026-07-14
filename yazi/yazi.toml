@@ -1,0 +1,12 @@
+[opener]
+gwenview = [
+    { run = 'gwenview "$@"', orphan = true, desc = "Gwenview", for = "unix" }
+]
+gimp = [
+    { run = 'gimp "$@"', orphan = true, desc = "GIMP", for = "unix" }
+]
+
+[open]
+rules = [
+    { mime = "image/*", use = ["gwenview", "gimp"] } # The first is the defualt
+]

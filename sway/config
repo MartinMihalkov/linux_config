@@ -173,7 +173,8 @@ bindsym $mod+Shift+s mode "$mode_system"
 
 # --- CUSTOM APP SHORTCUTS ---
 bindsym $mod+e exec alacritty -e yazi
-bindsym $mod+Shift+e exec alacritty -e nvim
+bindsym $mod+Shift+e exec dolphin
+bindsym $mod+Ctrl+e exec alacritty -e nvim
 
 # --- BRIGHTNESS & AUDIO ---
 bindsym XF86MonBrightnessUp   exec brightnessctl set +5%

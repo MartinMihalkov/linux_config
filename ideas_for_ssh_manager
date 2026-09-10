@@ -1,0 +1,67 @@
+Ideas for SSH manager
+
+
+0. Have API or XML RPC system for automation, like using a generalized syntax for controlling devices for multiple vendors. That way you can get an interface list with vendor-neutral request. It should be automation first.
+
+1. Everything is controlled with vim-bindings by default. The whole layout is customizable in terms of its looks and the keybindings. It can be really minimalistic or have many elements through extensions, and the ability to switch between different views (layouts). (Almost) every component, like dialog or terminal tab can be separated from the main window and added in a different window. It should be tmux-friendly.
+
+
+      0.1. An device view for that makes a chart of the physical and logical interfaces, as well as IP addressing of a device.
+      
+      0.2 Have an addressing scheme view which shows the planned IP scheme as well as the addresses currently configured on devices, by reading the current configurations of all devices, to which you have started a session.
+
+      0.3 Sessions allow you to open multiple devices at once.
+
+      0.4 Fast integrated session manager, like sshs, ability to group sessions under tabs, put color to them.
+
+
+2. In the terminal tabs although you see the output of your devices, it first has gone through some analysis and possibly editing and the terminal you see is not just a terminal but a more advanced space which allows you to show dropdown menues, other complex elements, which are stacked on top.
+
+5. Have configuration version control, which automatically gets the config of devices on commit or at a time interval and is vendor-neutral. Ability to compose easily configurations from different versions into new ones in a editor-like space (I can import nvim, emacs, vim), and the ability to easily deploy the configuration.
+
+
+7. Addon for AI/MCP integration with which to configure devices. Have a simple syntax that can be used to run commands to multiple devices.
+      7.1 There may be inline AI prompt that can suggest you commands, but it should be added as an extension, so no uneeded bloat.
+
+8. Macros that are template-specific, i.e. depending on what you have already typed or for some vendors, like Juniper, depending on the current hierarchy, there may be different actions.
+
+      8.2. Such macros can be default for the vendor and/or they can be added configured others.
+
+      8.1. Resolve interface notation, based on OS: 000 turns into ge-0/0/0 in Juniper and ge0/0/0 in Cisco.
+
+      8.2 Easy to open dropdown menu of the latest commands used with search field with regex capabilities and vim-like navigation with dynamic template recongniton recognition that allows fast jumping between variable parts that could change.
+
+      8.3 You can go to complex history mode in which a text editor field (I can import nvim, emacs, vim) is opened in which you can easily add the commands from the history edit them, order them and deploy them at once to the terminal. When you do that in the history commands that are executed at once would be able to be executed again at once or realy easily separately called. During the complex history mode, you will be able to insert into the editor (I can import nvim, emacs, vim) field a set of variables if they have been entered at once.
+
+      8.4. Have unified syntax for showing interfaces and the most common things that resolve to vendor-specific questions.
+
+      9. Inteligent text colorization per vendor, there should be really powerful way of specifying different coloring for different conditions and scenarios based on vendor, the things you have typed etc. The coloring should be done in real time as you are typing. I could use LSP (Language Server Protocol) and instead of languages for different vendors, and the coloring should be able to be changed, like you can change the coloring for a language with TreeSitter. I can use TreeSitter for that. I can even put option to create custom color maps with AI. There will be one vendor-specific template and different color maps can be put on that template. If there is a wrong command or something that doesn't make sense, the wrong statement might be highlighted in red.
+            Autocompletion doesn't make sense, because there is help system and because there are context-specific template-based macros that can be used for entering more than one word for a specific action.
+
+10. There should be either different versions: one minimal version that has only the basic features for autocompletion and not different views, automation ability etc., and one full featured version that also (maybe) has the ability extensions. Or one version that would allow extensions, which are so seamlessly connected, that they don't provide any bloat output.
+
+11. Ability to write in multiple terminals at a time. You can write a pattern, with static syntax and denote the words which should be variables, after that the command will be added to all your devices and you will automatically jump between tabs with the ability to write the needed corrections for each. Or this can be done with multiple split windows that show configuration piece and edit the configuration for all device in editor space and the deploy all those commands at once.
+
+12. It should be so easy to use with different views that I even use it as a primary terminal because I can hide the UI elements I don't need and at the same time I have nice colorization for Linux, macros and history manager.
+
+13. There will be many default configurations that you can use as a template and further edit or mix with other templates for initial config. You can also import the current config of your device with one click and add more templates on top of it and deploy the whole thing. This space is the config editor, which allows for bulk config. editing. You can add your custom templates.
+
+
+14. There can be corporate features for security that can be installed and configured from a central config server to enforse some policies.
+
+
+===== WHAT I WANT FROM THAT EDITOR =====
+An editor that is so customizable, and smart that I don't care with what vendor I am working, the experience is always seamless and easy with a unified workflow.
+
+===== WHAT ARE THE MOST IMPORTANT THINGS? =====
+- Vast customization of the layout AND the keybindings.
+- Template based macros, that works like MobaXTerm's <space> for dropdown menu, but is context-specific, template based and provides the ability to input multiple macros at ones, combine them edit, them easily in an editor space. Possibly by using LSP and Treesitter.
+- Template based command history, that provides ability to input multiple macros at once, combine them together and with new macros, edit them easily in an editor space.
+- Really advanced real-time vendor-specific, customizable text colorization using (maybe) LSP and Treesitter.
+- Advanced, fast way to configure repetitive commands to multiple device, by using smart templates and fast editing in split pain view for multiple devices and deploying with one click or the option to edit one template and then jump forward and backward between tabs and edit the variable parts of the repetitive configuration.
+
+
+===== POSSIBLE NAME =====
+- Marti Manager
+- Martiger
+- Ivy

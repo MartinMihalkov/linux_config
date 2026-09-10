@@ -10,7 +10,9 @@ exec_always /home/martin/.local/share/bin/sway-battery-alert.sh
 exec_always mako
 
 exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-#exec_always dunst
+
+#start Viber in bg
+exec viber StartInBackground
 
 set $mod Mod4
 
